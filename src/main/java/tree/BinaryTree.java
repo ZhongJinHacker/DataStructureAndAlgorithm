@@ -123,6 +123,37 @@ public class BinaryTree {
         return null;
     }
 
+    /**
+     * 删除节点
+     * @param id
+     */
+    public void deleteNode(int id) {
+        if (this.root == null) return;
+        if (this.root.id == id) {
+            this.root = null;
+            return;
+        }
+        deleteNode(root, id);
+    }
+
+    private void deleteNode(TreeNode node, int id) {
+        if (node.getLeftSubNode() != null && node.getLeftSubNode().id == id) {
+            node.setLeftSubNode(null);
+            return;
+        }
+        else if (node.getLeftSubNode() != null && node.getLeftSubNode().id != id) {
+            deleteNode(node.getLeftSubNode(), id);
+        }
+
+        if (node.getRightSubNode() != null && node.getRightSubNode().id == id) {
+            node.setRightSubNode(null);
+            return;
+        }
+        else if (node.getRightSubNode() != null && node.getRightSubNode().id != id) {
+            deleteNode(node.getRightSubNode(), id);
+        }
+    }
+
 
     public static class TreeNode {
         private int id;

@@ -64,4 +64,12 @@ public class BinaryTreeTest {
         BinaryTree.TreeNode node = binaryTree.proSearch(3);
         System.out.println(node);
     }
+
+    @Test
+    public void deleteNode() {
+        binaryTree.preOrder();
+        binaryTree.deleteNode(3);
+        System.out.println("---");
+        binaryTree.preOrder();
+    }
 }
