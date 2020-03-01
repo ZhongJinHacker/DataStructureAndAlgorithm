@@ -44,6 +44,10 @@ public class ArrayBinaryTree {
         preOrder(2*index+2);
     }
 
+    /**
+     * 从index节点开始中序遍历
+     * @param index
+     */
     public void midOrder(int index) {
         if (arr == null || arr.length == 0) return;
         if (index > arr.length-1) return;
@@ -52,6 +56,10 @@ public class ArrayBinaryTree {
         midOrder(2*index+2);
     }
 
+    /**
+     * 从index节点开始后序遍历
+     * @param index
+     */
     public void proOrder(int index) {
         if (arr == null || arr.length == 0) return;
         if (index > arr.length-1) return;
