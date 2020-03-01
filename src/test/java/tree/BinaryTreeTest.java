@@ -46,4 +46,22 @@ public class BinaryTreeTest {
     public void proOrder() {
         binaryTree.proOrder();
     }
+
+    @Test
+    public void preSearch() {
+        BinaryTree.TreeNode node = binaryTree.preSearch(3);
+        System.out.println(node);
+    }
+
+    @Test
+    public void midSearch() {
+        BinaryTree.TreeNode node = binaryTree.midSearch(3);
+        System.out.println(node);
+    }
+
+    @Test
+    public void proSearch() {
+        BinaryTree.TreeNode node = binaryTree.proSearch(3);
+        System.out.println(node);
+    }
 }

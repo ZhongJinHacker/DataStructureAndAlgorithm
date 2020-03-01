@@ -15,7 +15,9 @@ public class BinaryTree {
         this.root = root;
     }
 
-    // 前序遍历
+    /**
+     * 前序遍历
+     */
     public void preOrder() {
         preOrderByNode(this.root);
     }
@@ -27,7 +29,26 @@ public class BinaryTree {
         preOrderByNode(node.getRightSubNode());
     }
 
-    // 中序遍历
+    /**
+     * 前序查找
+     */
+    public TreeNode preSearch(int id) {
+        return preSearchByNode(root, id);
+    }
+
+    private TreeNode preSearchByNode(TreeNode node, int id) {
+        if (node == null) return null;
+        if (node.id == id) return node;
+        TreeNode nodeLeft = preSearchByNode(node.getLeftSubNode(), id);
+        if (nodeLeft != null) {
+            return nodeLeft;
+        }
+        return preSearchByNode(node.getRightSubNode(), id);
+    }
+
+    /**
+     * 中序遍历
+     */
     public void midOrder() {
         midOrderByNode(this.root);
     }
@@ -39,7 +60,31 @@ public class BinaryTree {
         midOrderByNode(node.getRightSubNode());
     }
 
-    // 后序遍历
+    /**
+     * 中序查找
+     * @param id
+     * @return
+     */
+    public TreeNode midSearch(int id) {
+        return midSearchByNode(root, id);
+    }
+
+    private TreeNode midSearchByNode(TreeNode node, int id) {
+        if (node == null) return null;
+
+        TreeNode nodeLeft = midSearchByNode(node.getLeftSubNode(), id);
+        if (nodeLeft != null) {
+            return nodeLeft;
+        }
+
+        if (node.id == id) return node;
+
+        return midSearchByNode(node.getRightSubNode(), id);
+    }
+
+    /**
+     * 后序遍历
+     */
     public void proOrder() {
         proOrderByIndex(this.root);
     }
@@ -49,6 +94,33 @@ public class BinaryTree {
         proOrderByIndex(node.getLeftSubNode());
         proOrderByIndex(node.getRightSubNode());
         System.out.println(node.value);
+    }
+
+    /**
+     * 中序查找
+     * @param id
+     * @return
+     */
+    public TreeNode proSearch(int id) {
+        return proSearchByNode(root, id);
+    }
+
+    private TreeNode proSearchByNode(TreeNode node, int id) {
+        if (node == null) return null;
+
+        TreeNode nodeLeft = proSearchByNode(node.getLeftSubNode(), id);
+        if (nodeLeft != null) {
+            return nodeLeft;
+        }
+
+        TreeNode nodeRight = proSearchByNode(node.getRightSubNode(), id);
+        if (nodeRight != null) {
+            return nodeRight;
+        }
+
+        if (node.id == id) return node;
+
+        return null;
     }
 
 
@@ -80,6 +152,14 @@ public class BinaryTree {
 
         public TreeNode getRightSubNode() {
             return rightSubNode;
+        }
+
+        @Override
+        public String toString() {
+            return "TreeNode{" +
+                    "id=" + id +
+                    ", value='" + value +
+                    '}';
         }
     }
 }
